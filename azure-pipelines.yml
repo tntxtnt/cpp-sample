@@ -39,7 +39,7 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/cpp-sample'
+    rootFolderOrFile: '$(Build.BinariesDirectory)/cpp-sample'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/cpp-sample.zip'
