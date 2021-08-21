@@ -31,11 +31,17 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    
+- task: CopyFiles@2
+  inputs:
+    Contents: '**\$(BuildConfiguration)\**\?(*.exe|*.dll|*.pdb)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - task: AzureFileCopy@4
   inputs:
-    SourcePath: '$(Build.ArtifactStagingDirectory)\*.exe'
+    SourcePath: '$(Build.ArtifactStagingDirectory)\*.*'
     azureSubscription: 'Azure subscription 1(9e8e733b-462e-4241-8a0c-417399723e98)'
     Destination: 'AzureBlob'
     storage: 'cppbot1'
-    ContainerName: 'test'
-    BlobPrefix: 'test'
+    ContainerName: 'test1'
+    BlobPrefix: 'test2'
