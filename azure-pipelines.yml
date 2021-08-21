@@ -7,12 +7,13 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  name: 'HP Omen 2020'
 
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  buildPlatform: 'x64'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -31,3 +32,11 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: '$(Build.ArtifactStagingDirectory)\*.exe'
+    azureSubscription: 'Azure subscription 1(9e8e733b-462e-4241-8a0c-417399723e98)'
+    Destination: 'AzureBlob'
+    storage: 'cppbot1'
+    ContainerName: 'test'
+    BlobPrefix: 'test'
