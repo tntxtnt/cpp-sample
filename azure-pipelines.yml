@@ -43,5 +43,4 @@ steps:
     azureSubscription: 'Azure subscription 1(9e8e733b-462e-4241-8a0c-417399723e98)'
     Destination: 'AzureBlob'
     storage: 'cppbot1'
-    ContainerName: 'test1'
-    BlobPrefix: 'test2'
+    ContainerName: 'cpp-sample'
