@@ -35,12 +35,12 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '$(buildPlatform)/$(buildConfiguration)/**/?(*.exe|*.dll|*.pdb)'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/cpp-sample'
+    TargetFolder: '$(Build.BinariesDirectory)/cpp-sample'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/cpp-sample'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/cpp-sample/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/cpp-sample.zip'
     replaceExistingArchive: true
